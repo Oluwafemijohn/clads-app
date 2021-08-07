@@ -13,10 +13,10 @@
     <string name="reset_password">Reset Password</string>
     <string name="welcome_back">Welcome back</string>
     <string name="login_continue">Login to continue</string>
-    <string name="all_signup_with_google">Signin with Google</string>
+    <string name="all_signup_with_google">SignIn with Google</string>
     <string name="all_email_address">Email Address</string>
     <string name="all_password">Password</string>
-    <string name="all_forget_password">Forget Password?</string>
+    <string name="all_forget_password">Forgot Password?</string>
     <string name="login">Login</string>
     <string name="google_icon">Google icon</string>
     <string name="forgot_password_fragment_send_request_password_link">Send Request Password Link</string>
@@ -53,6 +53,8 @@
     <string name="all_invalid_email">Invalid Email</string>
     <string name="all_password_is_required">Password is Required</string>
     <string name="all_please_enter_first_name">Please Enter First Name</string>
+    <string name="all_please_enter_last_name">Please Enter Last Name</string>
+    <string name="all_please_enter_phone_number">Please Enter Phone Number</string>
     <string name="all_password_mismatch">Password Mismatch</string>
     <string name="all_select_account_type">Select Account Type</string>
     <string name="new_user_sign_up_for_free">New user? Sign Up for free</string>
@@ -72,6 +74,7 @@
     <string name="resources">Resources</string>
     <string name="subscription">Subscription</string>
     <string name="logout">Logout</string>
+    <string name="login_status">LOGIN_STATUS</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="ijeoma_ibukun_babangida">Ijeoma Ibukun Babangida</string>
     <string name="version_1_0">version 1.0</string>
@@ -101,7 +104,7 @@
 
     <string name="add_measurement_fragment_name">Name</string>
     <string name="add_measurement_fragment_add_measurement">Add measurement</string>
-    <string name="add_measurement_fragment_save_button">Save</string>
+    <string name="all_save">Save</string>
     <string name="add_measurement_fragment_add_button">Add</string>
     <string name="blank_text_view_item">Blank text view item</string>
     <string name="add_delivery_address">Add Delivery Address</string>
@@ -111,6 +114,7 @@
     <string name="delivery_address_state">State</string>
     <string name="there_are_no_delivery_address">There are no delivery address for this client</string>
     <string name="add_address">Add Address</string>
+    <string name="save_client">Save Client</string>
     <string name="add_address_fragment">Add address</string>
     <string name="edit_measurement">Edit measurement</string>
 
@@ -163,7 +167,7 @@
         <item>Zamfara</item>
         <item>FCT</item>
     </string-array>
-<!-- String extractions -->
+    <!-- String extractions -->
     <string name="tag">Dialog tag</string>
     <string name="request_key_keyClicked">keyClicked</string>
     <string name="key_bundleKey">bundleKey</string>
@@ -176,7 +180,7 @@
     <string name="dialog_alert_confirmation_yes">Yes</string>
     <string name="dialog_alert_confirmation_cancle">Cancel</string>
 
-<!--  Temporary string used for dummy array -->
+    <!--  Temporary string used for dummy array -->
     <string name="arm">Arm</string>
     <string name="leg">Leg</string>
     <string name="neck">Neck</string>
@@ -184,7 +188,7 @@
     <string name="sholder">Sholder</string>
     <string name="elbow">Elbow</string>
 
-<!-- Validation strings -->
+    <!-- Validation strings -->
     <string name="enter_the_delivery_address_validation">Please, enter the delivery address</string>
     <string name="enter_city_validation">Please, enter a city</string>
     <string name="enter_state_validation">Please, select a state</string>
@@ -207,7 +211,7 @@
     <string name="new_password">New Password</string>
     <string name="old_password">Old Password</string>
     <string name="bank_deposit_naira">Bank deposit (Naira)</string>
-    <string name="bank_deposit_usd_gpb_eur">Bank deposit (USD, GPB, Eur)</string>
+    <string name="bank_deposit_usd_gpb_eur">Bank deposit (USD: GPB: Eur)</string>
     <string name="verified_information">Verified Information</string>
     <string name="_0700000000000">0700000000000</string>
     <string name="password">Password</string>
@@ -269,7 +273,7 @@
     <string name="add_specialty">Add specialty</string>
     <string name="view_all_details">View All Details</string>
     <string name="wallet">Wallet</string>
-    <string name="_23_481_000_00">$ 23, 481,000.00</string>
+    <string name="_0.00">$ 0.00</string>
     <string name="ola_machiavelli">Ola Machiavelli</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="read_more">Read More</string>
@@ -300,11 +304,77 @@
     <string name="city">City</string>
     <string name="lagos">Lagos</string>
     <string name="street">Street</string>
-    <string name="no_7_decabon_way_lekki">No 7 Decabon way, lekki</string>
+    <string name="no_7_decabon_way_lekki">No 7 Decagon way, Lekki</string>
     <string name="_2020">2020</string>
     <string name="required">Required</string>
     <string name="tag_employee_number_dialog_fragment">Employee Number dialog fragment</string>
     <string name="frstname_dialog_fragment">FirstName Dialog Fragment</string>
+    <string name="rename_description_dialog_fragment">Rename Description Dialog Fragment</string>
+
+    <string name="you_have_no_photo_in_your_gallery">You have no photo in your gallery</string>
+    <string name="media_share">Share</string>
+    <string name="media_edit">Edit</string>
+    <string name="media_delete">Delete</string>
+    <string name="send_to">SEND</string>
+    <string name="enter_name">Enter image name</string>
+
+    <string name="phone">08154343448</string>
+    <string name="nigeria">Nigeria</string>
+    <string name="null_all">null</string>
+
+    <string name="videos">Videos</string>
+    <string name="view_all">View All</string>
+    <string name="hour_30_min">1 hours 30 mins</string>
+    <string name="pope_hope">Pope Hope</string>
+    <string name="stitching_neatly">Stitching Neatly</string>
+    <string name="article_publications">Article/Publications</string>
+    <string name="articles">Articles</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="invalid_phone_number">Invalid Phone number</string>
+    <string name="all_phone_number_is_required">Phone Number is required</string>
+
+
+    <string name="signed_up">SIGNED_UP</string>
+    <string name="user_name">USER_NAME</string>
+    <string name="log_in">LOGIN</string>
+    <string name="log_out">LOGOUT</string>
+
+    <string name="how_to_perfectly_sew_attire">How to perfectly sew attire</string>
+    <string name="posted_1_month_ago">Posted 1 month ago</string>
+    <string name="how_to_sew_attire">How to sew attire</string>
+    <string name="_1_hour_30_minutes">1 hour 30 minutes</string>
+    <string name="individual_video">Individual Video</string>
+    <string name="permision_to_access">\Permission to access your \</string>
+    <string name="is_required_to_use_this_app">\ is required to use this app\</string>
+    <string name="hi">Hi %s</string>
+    <string name="confirk_email_hi">Hi</string>
+    <string name="confirm_email_you_are_ready_to_go">, you are almost ready to start enjoying clads. Simply click the blue button below to verify your email address</string>
+
+    <string name="resource_view_individual_article_fragment_article_link_key">articleItem</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="enter_union_resource">Enter Union Details</string>
+    <string name="enter_union_name">Enter Union Name</string>
+    <string name="enter_union_ward">Enter Union Ward</string>
+    <string name="rename_description">Rename description</string>
+
+<string name="two_weeks">2 Weeks</string>
+    <string name="logout_confirmation_dialog_message">Are you sure you want to logout?</string>
+    <string name="delete_image_confirmation">Are you sure you want to delete this item?</string>
+    <string name="logout_confirmation_yes">YES</string>
+    <string name="you_have_no_subscription">You Have No Subscription</string>
+    <string name="add_subscription">Add Subscription</string>
+
+    <string name="fragment_add_delivery_address_save_text_on_button">Add Address</string>
+
+    <string name="deleting_client">Deleting Client...</string>
+
+    <string name="rename">Rename</string>
+    <string name="must_contain_3_or_more">Must Contain 3 or More Characters</string>
+    <string name="edit_address">Edit Address</string>
+    <string name="basic_info">Basic Info</string>
+    <string name="_2nd_floor_luzen_plaza_igbo_efon_lekki_lagos">2nd_floor luzen plaza igbo efon lekki lagos</string>
+    <string name="ykunleq_example_com">ykunleq@example.com</string>
+    <string name="om">OM</string>
 
 
     <string-array name="account_category">

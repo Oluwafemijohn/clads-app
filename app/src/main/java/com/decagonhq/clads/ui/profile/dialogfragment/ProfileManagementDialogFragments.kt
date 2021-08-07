@@ -15,7 +15,7 @@ import com.decagonhq.clads.databinding.AccountFirstNameDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountGenderDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountLastNameDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountLegalStatusDialogFragmentBinding
-import com.decagonhq.clads.databinding.AccountOtherNameDialogFragmentBinding
+import com.decagonhq.clads.databinding.AccountPhoneNumberDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountShowroomAddressDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountUnionLgaDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountUnionNameDialogFragmentBinding
@@ -24,6 +24,7 @@ import com.decagonhq.clads.databinding.AccountUnionWardDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountWorkshopCityDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountWorkshopStateDialogFragmentBinding
 import com.decagonhq.clads.databinding.AccountWorkshopStreetDialogFragmentBinding
+import com.decagonhq.clads.databinding.RenameGalleryImageDialogFragmentBinding
 import com.decagonhq.clads.databinding.SpecialtyAddSpecialtyDialogFragmentBinding
 import com.decagonhq.clads.databinding.SpecialtyDeliveryTimeDialogFragmentBinding
 import com.decagonhq.clads.databinding.SpecialtyObiomaTrainedDialogFragmentBinding
@@ -61,6 +62,7 @@ import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURR
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_LAST_NAME_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_LEGAL_STATUS_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_OTHER_NAME_BUNDLE_KEY
+import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_RENAME_DESCRIPTION_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_SHOWROOM_ADDRESS_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_STATE_NAME_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_UNION_LGA_BUNDLE_KEY
@@ -69,8 +71,10 @@ import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURR
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_WORKSHOP_CITY_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_WORKSHOP_STATE_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.CURRENT_ACCOUNT_WORKSHOP_STREET_BUNDLE_KEY
-import com.decagonhq.clads.ui.profile.editprofile.SpecialtyFragment.Companion.ADD_SPECIALTY_BUNDLE_KEY
-import com.decagonhq.clads.ui.profile.editprofile.SpecialtyFragment.Companion.ADD_SPECIALTY_REQUEST_KEY
+import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.RENAME_DESCRIPTION_BUNDLE_KEY
+import com.decagonhq.clads.ui.profile.editprofile.AccountFragment.Companion.RENAME_DESCRIPTION_REQUEST_KEY
+import com.decagonhq.clads.ui.profile.editprofile.SpecialtyFragment.Companion.ADD_NEW_SPECIALTY_BUNDLE_KEY
+import com.decagonhq.clads.ui.profile.editprofile.SpecialtyFragment.Companion.ADD_NEW_SPECIALTY_REQUEST_KEY
 import com.decagonhq.clads.ui.profile.editprofile.SpecialtyFragment.Companion.CURRENT_SPECIAL_DELIVERY_TIME_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.SpecialtyFragment.Companion.CURRENT_SPECIAL_OBIOMA_TRAINED_BUNDLE_KEY
 import com.decagonhq.clads.ui.profile.editprofile.SpecialtyFragment.Companion.SPECIAL_DELIVERY_TIME_BUNDLE_KEY
@@ -108,8 +112,7 @@ class ProfileManagementDialogFragments(
                 val okButton = binding.accountEmployeeNumberDialogFragmentOkButton
                 val cancelButton = binding.accountEmployeeNumberDialogFragmentCancelButton
 
-                val retrievedArgs =
-                    bundle?.getString(CURRENT_ACCOUNT_EMPLOYEE_BUNDLE_KEY)
+                val retrievedArgs = bundle?.getString(CURRENT_ACCOUNT_EMPLOYEE_BUNDLE_KEY)
 
                 /*Attaching the data*/
                 employeeNumberEditText.setText(retrievedArgs)
@@ -286,24 +289,24 @@ class ProfileManagementDialogFragments(
                     }
                 }
             }
-            R.layout.account_other_name_dialog_fragment -> {
+            R.layout.account_phone_number_dialog_fragment -> {
                 /*Initialise binding*/
-                val binding = AccountOtherNameDialogFragmentBinding.bind(view)
-                val otherNameEditText =
-                    binding.accountOtherNameDialogFragmentOtherNameEditTextView
-                val okButton = binding.accountOtherNameDialogFragmentOkButton
-                val cancelButton = binding.accountOtherNameDialogFragmentCancelButton
+                val binding = AccountPhoneNumberDialogFragmentBinding.bind(view)
+                val phoneNumberEditText =
+                    binding.accountPhoneNumberDialogFragmentOtherNameEditTextView
+                val okButton = binding.accountPhoneNumberDialogFragmentOkButton
+                val cancelButton = binding.accountPhoneNumberDialogFragmentCancelButton
 
                 val retrievedArgs =
                     bundle?.getString(CURRENT_ACCOUNT_OTHER_NAME_BUNDLE_KEY)
 
                 /*Attaching the data*/
-                otherNameEditText.setText(retrievedArgs)
+                phoneNumberEditText.setText(retrievedArgs)
 
                 /*when the dialog ok button is clicked*/
                 okButton.setOnClickListener {
                     val inputValue =
-                        otherNameEditText.text.toString()
+                        phoneNumberEditText.text.toString()
 
                     when {
                         inputValue.isEmpty() -> {
@@ -329,6 +332,23 @@ class ProfileManagementDialogFragments(
                 /*when the dialog cancel button is clicked*/
                 cancelButton.setOnClickListener {
                     dismiss()
+                }
+                /*Validate Dialog Fields onTextChange*/
+                phoneNumberEditText.doOnTextChanged { _, _, _, _ ->
+                    when {
+                        phoneNumberEditText.text!!.trim().isEmpty() -> {
+                            binding.accountPhoneNumberDialogFragmentOtherNameEditTextInputLayout.error =
+                                getString(
+                                    R.string.required
+                                )
+                            binding.accountPhoneNumberDialogFragmentOtherNameEditTextInputLayout.errorIconDrawable =
+                                null
+                        }
+                        else -> {
+                            binding.accountPhoneNumberDialogFragmentOtherNameEditTextInputLayout.error =
+                                null
+                        }
+                    }
                 }
             }
             R.layout.account_gender_dialog_fragment -> {
@@ -741,6 +761,7 @@ class ProfileManagementDialogFragments(
                     }
                 }
             }
+
             R.layout.account_union_state_dialog_fragment -> {
                 /*Initialise binding*/
                 val binding = AccountUnionStateDialogFragmentBinding.bind(view)
@@ -1048,9 +1069,9 @@ class ProfileManagementDialogFragments(
                         }
                         else -> {
                             setFragmentResult(
-                                ADD_SPECIALTY_REQUEST_KEY,
+                                ADD_NEW_SPECIALTY_REQUEST_KEY,
                                 bundleOf(
-                                    ADD_SPECIALTY_BUNDLE_KEY to inputValue
+                                    ADD_NEW_SPECIALTY_BUNDLE_KEY to inputValue
                                 )
                             )
                             dismiss()
@@ -1071,6 +1092,68 @@ class ProfileManagementDialogFragments(
                         }
                         else -> {
                             binding.specialtyAddSpecialtyDialogFragmentAddSpecialtyTextInputLayout.error =
+                                null
+                        }
+                    }
+                }
+            }
+            R.layout.rename_gallery_image_dialog_fragment -> {
+                /*Initialise binding*/
+                val binding = RenameGalleryImageDialogFragmentBinding.bind(view)
+                val renameDescriptionEditText =
+                    binding.renameGalleryDescriptionDialogFragmentRenameDescriptionEditTextView
+                val okButton = binding.renameGalleryDescriptionDialogFragmentOkButton
+                val cancelButton = binding.renameGalleryDescriptionDialogFragmentCancelButton
+
+                val retrievedArgs =
+                    bundle?.getString(CURRENT_ACCOUNT_RENAME_DESCRIPTION_BUNDLE_KEY)
+
+                /*Attaching the data*/
+                renameDescriptionEditText.setText(retrievedArgs)
+
+                /*when the dialog ok button is clicked*/
+                okButton.setOnClickListener {
+                    val inputValue =
+                        renameDescriptionEditText.text.toString()
+
+                    when {
+                        inputValue.isEmpty() -> {
+                            binding.renameGalleryDescriptionDialogFragmentRenameDescriptionEditTextInputLayout.error =
+                                getString(
+                                    R.string.required
+                                )
+                            binding.renameGalleryDescriptionDialogFragmentRenameDescriptionEditTextInputLayout.errorIconDrawable =
+                                null
+                        }
+                        else -> {
+                            setFragmentResult(
+                                RENAME_DESCRIPTION_REQUEST_KEY,
+                                bundleOf(
+                                    RENAME_DESCRIPTION_BUNDLE_KEY to inputValue
+                                )
+                            )
+                            dismiss()
+                        }
+                    }
+                }
+                /*when the dialog cancel button is clicked*/
+                cancelButton.setOnClickListener {
+                    dismiss()
+                }
+
+                /*Validate Dialog Fields onTextChange*/
+                renameDescriptionEditText.doOnTextChanged { _, _, _, _ ->
+                    when {
+                        renameDescriptionEditText.text!!.trim().isEmpty() -> {
+                            binding.renameGalleryDescriptionDialogFragmentRenameDescriptionEditTextInputLayout.error =
+                                getString(
+                                    R.string.required
+                                )
+                            binding.renameGalleryDescriptionDialogFragmentRenameDescriptionEditTextInputLayout.errorIconDrawable =
+                                null
+                        }
+                        else -> {
+                            binding.renameGalleryDescriptionDialogFragmentRenameDescriptionEditTextInputLayout.error =
                                 null
                         }
                     }

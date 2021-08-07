@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.decagonhq.clads.R
 import com.decagonhq.clads.databinding.ForgotPasswordFragmentBinding
+import com.decagonhq.clads.ui.BaseFragment
 import com.decagonhq.clads.util.ValidationObject
 import com.google.android.material.textfield.TextInputEditText
 
-class ForgotPasswordFragment : Fragment() {
+class ForgotPasswordFragment : BaseFragment() {
 
     private var _binding: ForgotPasswordFragmentBinding? = null
     private val binding get() = _binding!!
@@ -47,7 +47,8 @@ class ForgotPasswordFragment : Fragment() {
                     return@setOnClickListener
                 }
                 else -> {
-                    findNavController().navigate(R.id.action_forgotPasswordFragment_to_confirmPasswordResetFragment)
+                    val action = ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToConfirmPasswordResetFragment()
+                    findNavController().navigate(action)
                 }
             }
         }

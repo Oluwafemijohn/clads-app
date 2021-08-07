@@ -10,16 +10,15 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.decagonhq.clads.R
+import com.decagonhq.clads.data.domain.client.DeliveryAddress
 import com.decagonhq.clads.databinding.AddAddressFragmentBinding
-import com.decagonhq.clads.model.DeliveryAddressModel
-import com.decagonhq.clads.util.errorSnack
-import com.google.android.material.snackbar.Snackbar
+import com.decagonhq.clads.util.showSnackBar
 import com.google.android.material.textfield.TextInputEditText
 
 class AddAddressFragment : Fragment() {
     private var _binding: AddAddressFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var addAddressButton: Button
+    private lateinit var saveAddressButton: Button
     private lateinit var stateSelectorDropdown: AutoCompleteTextView
     private lateinit var deliveryAddress: TextInputEditText
     private lateinit var cityAddress: TextInputEditText
@@ -37,34 +36,31 @@ class AddAddressFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Adding new address
-        addAddressButton = binding.addAddressFragmentSaveAddressButton
+        saveAddressButton = binding.addAddressFragmentSaveAddressButton
         stateSelectorDropdown = binding.addAddressFragmentStateAutoComplete
         deliveryAddress = binding.addAddressFragmentEnterDeliveryAddressEditText
         cityAddress = binding.addAddressFragmentCityAddressEditText
 
-        /*Form submition*/
-        addAddressButton.setOnClickListener {
+        /*Form submission*/
+        saveAddressButton.setOnClickListener {
             val enterDeliveryAddress = deliveryAddress.text.toString()
             val cityAddress = cityAddress.text.toString()
             val stateAddress = stateSelectorDropdown.text.toString()
             if (enterDeliveryAddress.isEmpty()) {
-                binding.addAddressFragmentEnterDeliveryAddressEditTextLayout.errorSnack(
-                    getString(R.string.enter_the_delivery_address_validation),
-                    Snackbar.LENGTH_LONG
+                binding.addAddressFragmentEnterDeliveryAddressEditTextLayout.showSnackBar(
+                    getString(R.string.enter_the_delivery_address_validation)
                 )
             } else if (cityAddress.isEmpty()) {
-                binding.addAddressFragmentCityAddressEditTextLayout.errorSnack(
-                    getString(R.string.enter_city_validation),
-                    Snackbar.LENGTH_LONG
+                it.showSnackBar(
+                    getString(R.string.enter_city_validation)
                 )
             } else if (stateAddress == getString(R.string.state)) {
-                binding.addAddressFragmentCityAddressEditTextLayout.errorSnack(
-                    getString(R.string.enter_state_validation),
-                    Snackbar.LENGTH_LONG
+                it.showSnackBar(
+                    getString(R.string.enter_state_validation)
                 )
             } else {
                 val deliveryAddressModel =
-                    DeliveryAddressModel(
+                    DeliveryAddress(
                         enterDeliveryAddress,
                         cityAddress,
                         stateAddress
