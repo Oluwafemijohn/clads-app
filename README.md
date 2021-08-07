@@ -1,6 +1,6 @@
 # clads-app
 
-Hi, Welcome to my repo. Kindly checkout to my branch   Feature_edit-descriptions-and-delete-image-implementation_oluwafemi  to see the updated version.
+Hi, Welcome to my repo. Kindly checkout to my branch **develop-team-c**  to see the updated version.
 Technologies used are:
 * Retrofit
 * Room
